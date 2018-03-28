@@ -38,6 +38,7 @@ int main() {
 
 	sol = traverseDynamic(matrix, ending_row, ending_column);
 	printf("Za prolaz matricom dinamikom najbrzi put iznosi %u\n", sol);
+	
 
 	matrix_delete(matrix);
 
@@ -47,7 +48,20 @@ int main() {
 
 unsigned traverseRecursive(struct matrix *matrix, int row, int column) {
 
-	return 0;
+	unsigned trenutna = *matrix->cells;
+
+	// dolje
+	if (column <=matrix -> num_columns - 1)
+	{
+	  return trenutna + traverseRecursive(matrix, row, column + 1);
+		
+	}
+	
+	// dolje
+	if (row<=matrix->num_rows-1)
+	{
+		return trenutna + traverseRecursive(matrix, row + 1, column);
+	}
 }
 
 unsigned traverseDynamic(struct matrix *matrix, int row, int column){
